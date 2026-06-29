@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://unpkg.com/primeicons/primeicons.css');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #e0f7f4, #d0eaff, #b2dfdb);
+  min-height: 100vh;
+}
+
+.app-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem 1rem;
+  min-height: 100vh;
+}
+
+// PrimeNG Card override
+:host ::ng-deep .weather-card {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 20px !important;
+  border: 1px solid #b2dfdb;
+  box-shadow: 0 8px 32px rgba(72, 187, 170, 0.15);
+  background: #ffffff;
+
+  .p-card-body { padding: 0 1.5rem 1.5rem; }
+}
+
+.card-header {
+  background: linear-gradient(135deg, #64d8cb, #81c784);
+  padding: 2rem 1.5rem 1.5rem;
+  border-radius: 20px 20px 0 0;
+  text-align: center;
+}
+
+.app-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.85);
+  margin-top: 0.25rem;
+}
+
+// Search
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1.5rem 0 1rem;
+
+  .search-input {
+    flex: 1;
+    border-radius: 10px !important;
+    border: 1.5px solid #81c784 !important;
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+    outline: none;
+
+    &:focus { border-color: #64d8cb !important; box-shadow: 0 0 0 2px rgba(100, 216, 203, 0.2) !important; }
+  }
+
+  :host ::ng-deep .search-btn {
+    background: linear-gradient(135deg, #64d8cb, #81c784) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    font-weight: 600;
+
+    &:hover { opacity: 0.9; }
+  }
+}
+
+// Error
+.error-msg {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+// Spinner
+.spinner-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+
+  :host ::ng-deep .custom-spinner .p-progress-spinner-circle {
+    stroke: #64d8cb !important;
+  }
+}
+
+// Current weather
+.current-weather {
+  text-align: center;
+
+  .city-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2e7d6e;
+    margin-bottom: 0.25rem;
+  }
+
+  .weather-icon { width: 90px; height: 90px; }
+
+  .temp {
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: #1a6e64;
+    line-height: 1;
+  }
+
+  .description {
+    font-size: 1rem;
+    color: #5a9e8f;
+    text-transform: capitalize;
+    margin: 0.5rem 0 1rem;
+  }
+}
+
+// Details grid
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.detail-item {
+  background: linear-gradient(135deg, #e0f7f4, #e8f5e9);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  .detail-label {
+    font-size: 0.78rem;
+    color: #5a9e8f;
+    font-weight: 500;
+  }
+
+  .detail-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a6e64;
+  }
+}
+
+// Forecast
+.divider-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #5a9e8f;
+  background: #fff;
+  padding: 0 0.5rem;
+}
+
+.forecast-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.forecast-item {
+  flex: 1;
+  text-align: center;
+  background: linear-gradient(135deg, #e0f7f4, #e8f5e9);
+  border-radius: 12px;
+  padding: 0.6rem 0.3rem;
+
+  .forecast-day {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #5a9e8f;
+    margin-bottom: 0.2rem;
+  }
+
+  img { width: 38px; height: 38px; }
+
+  .forecast-temp {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1a6e64;
+  }
+
+  .forecast-desc {
+    font-size: 0.65rem;
+    color: #7abfb3;
+    text-transform: capitalize;
+    margin-top: 0.1rem;
+  }
+}

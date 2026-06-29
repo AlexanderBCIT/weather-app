@@ -1,1 +1,4 @@
-export const environment = {};
+export const environment: { production: boolean; weatherApiKey: string } = {
+  production: false,
+  weatherApiKey: '37946ca73796a396d965d1c733132111'
+};
