@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { WeatherService } from './services/weather.service';
-
-// PrimeNG v21 - no more "Module" suffix
 import { InputText } from 'primeng/inputtext';
 import { Button } from 'primeng/button';
 import { Card } from 'primeng/card';
@@ -34,7 +32,10 @@ export class AppComponent {
   error: string = '';
   loading: boolean = false;
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(
+    private weatherService: WeatherService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   search() {
     if (!this.city.trim()) return;
@@ -47,10 +48,12 @@ export class AppComponent {
       next: (data) => {
         this.weather = data;
         this.loadForecast();
+        this.cdr.detectChanges();
       },
       error: () => {
         this.error = 'City not found. Please try again.';
         this.loading = false;
+        this.cdr.detectChanges();
       }
     });
   }
@@ -60,9 +63,11 @@ export class AppComponent {
       next: (data) => {
         this.forecast = data.list.filter((_: any, i: number) => i % 8 === 0).slice(0, 5);
         this.loading = false;
+        this.cdr.detectChanges();
       },
       error: () => {
         this.loading = false;
+        this.cdr.detectChanges();
       }
     });
   }
